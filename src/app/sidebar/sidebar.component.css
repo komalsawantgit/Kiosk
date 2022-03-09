@@ -1,0 +1,15 @@
+.menu{
+    width: 83px;
+    box-shadow: 2px 2px 4px rgb(197, 197, 197);
+    border-radius: 0px 0px 30px 0px;
+    background-color: white;
+}
+.menu_icons{
+    border-radius: 10px;
+}
+.menu_icons:hover{
+    background-color: #F1F1F1;
+}
+mat-icon{
+    color: #355070;
+}

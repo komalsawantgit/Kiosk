@@ -1,0 +1,18 @@
+.accordions{
+    width: 90%;
+}
+.accordion_box{
+    box-shadow: 2px 2px 4px rgb(197, 197, 197);
+    border-radius: 20px 0px 20px 0px;
+}
+.button_modal{
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    margin: 10px 0px;
+}
+.add_event{
+    margin-left: 75%;
+    cursor: pointer;
+    color: blue;
+}

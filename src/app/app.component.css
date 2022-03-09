@@ -1,0 +1,12 @@
+app-sidebar{
+    position: absolute;
+    z-index: 1000;
+}
+app-header{
+    margin-left: 7%;
+    position: absolute;
+}
+app-home{
+    position: relative;
+    /* margin-top: 50%; */
+}

@@ -1,0 +1,17 @@
+<div class="gallery_div mx-3 p-4 justify-content-center align-items-center d-flex flex-column">
+    <marquee direction="up" behavior="alternate" onmouseover="this.stop();" onmouseout="this.start();">
+        <!-- <img class="slider_image my-2" height="200" width="300" alt="Slider Image" [src]="url"> -->
+        <img class="slider_image my-2" height="200" width="350" id="slider1" src="assets\img\slider1.jpg" alt="Slider Image" (click)="ShowImage()">
+        <img class="slider_image my-2" height="200" width="350" id="slider2" src="assets\img\slider2.jpg" alt="Slider Image" (click)="ShowImage()">
+        <img class="slider_image my-2" height="200" width="350" id="slider3" src="assets\img\slider3.jpg" alt="Slider Image" (click)="ShowImage()">
+        <img class="slider_image my-2" height="200" width="350" id="slider4" src="assets\img\slider4.jpg" alt="Slider Image" (click)="ShowImage()">
+        <img class="slider_image my-2" height="200" width="350" id="slider5" src="assets\img\slider5.jpg" alt="Slider Image" (click)="ShowImage()">
+        <img class="slider_image my-2" height="200" width="350" id="slider6" src="assets\img\slider6.jpg" alt="Slider Image" (click)="ShowImage()">
+        <img class="slider_image my-2" height="200" width="350" id="slider7" src="assets\img\slider7.jpg" alt="Slider Image" (click)="ShowImage()">
+    </marquee>
+    <div class="add_image">
+        <button type="button" class="btn_add" mat-raised-button color="primary">
+            <mat-icon>add</mat-icon>Add New Image
+        </button>
+    </div>
+</div>

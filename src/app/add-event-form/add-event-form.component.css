@@ -1,0 +1,15 @@
+.add_new_event{
+    margin-left: 5%;
+    width: 90%;
+    background-color: white;
+    /* box-shadow: 2px 2px 4px rgb(197, 197, 197); */
+}
+.example-full-width{
+    background-color: white;
+}
+mat-form-field{
+    width: 47%;   
+}
+.text_area{
+    width: 100%;
+}

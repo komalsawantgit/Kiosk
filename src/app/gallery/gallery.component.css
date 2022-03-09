@@ -1,0 +1,21 @@
+.gallery_div{
+    box-shadow: 2px 2px 4px rgb(197, 197, 197);
+    border-radius: 20px;
+    background-color: white;
+}
+marquee{
+    height: 470px;
+}
+.slider_image:hover{
+    box-shadow: 2px 2px 4px rgb(197, 197, 197);
+    height: 300px;
+    width: 450px;
+    transition: all 1s ease-in-out;
+}
+.slider_image{
+    /* position: fixed; */
+    z-index: 1000;
+}
+.add_image, .btn_add{
+    width: 100%;
+}

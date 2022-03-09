@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+/* Calender CSS */
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-lists/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-calendars/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-angular-calendars/styles/material.css';
+/* Calender CSS End */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+:root{
+    --bg_color: #EAEAEA;
+    --division: #ffffff;
+    --sm_division: #355070;
+    --div_shadow: 2px 2px 4px rgb(197, 197, 197);
+    --div_uneven_border: 30px 0px 30px 0px;
+}
+html, body { height: 100%; background-color: #EAEAEA;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+a:hover{
+    text-decoration: none;
+}

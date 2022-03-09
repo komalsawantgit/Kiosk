@@ -1,0 +1,27 @@
+<div class="add_new_event p-4">
+    <form class="example-form newEvent_form">
+
+        <mat-form-field class="example-full-width mx-2" appearance="fill">
+            <mat-label>Topic</mat-label>
+            <input class="add_new_event" #event_topic matInput >
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="mx-2">
+            <mat-label>Select an option</mat-label>
+            <mat-select class="add_new_option" disableRipple #event_select>
+                <mat-option value="bussiness_solution">Business Solution</mat-option>
+                <mat-option value="aid">AID</mat-option>
+                <mat-option value="group_hr">Group HR, Admin and EHS</mat-option>
+                <mat-option value="samea">SAMEA</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="text_area" appearance="fill">
+            <mat-label>Event Description</mat-label>
+            <textarea class="new_event_desc" matInput #event_desc></textarea>
+        </mat-form-field>
+        <button class="mx-2 btn_add_event" type="file" mat-raised-button color="primary">
+            <mat-icon>add</mat-icon>Add
+        </button>
+        <button class="mx-2 btn_cancel" mat-button mat-dialog-close>Cancel</button>
+    </form>
+</div>
