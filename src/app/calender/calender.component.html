@@ -1,10 +1,9 @@
 <div class="calender_content" *ngIf="showMe" id="calender_popup">
-    <!-- <full-calendar defaultView="dayGridMonth" [plugins]="calendarPlugins"></full-calendar>  -->
-    <ejs-calendar id=calendar [value]='value' [min]='minDate' [max]='maxDate'> 
+    <ejs-calendar id=calendar [value]='value' [min]='minDate' [max]='maxDate'>
     </ejs-calendar>
 </div>
-<div class="calender_button border-0 d-flex justify-content-end align-items-center">
-    <button (click)="showCalender()" mat-button class="button_calender">
-        <mat-icon>event</mat-icon>Holiday Events<mat-icon>expand_more</mat-icon>
-    </button>
-</div>
+<button (click)="showCalender()" mat-raised-button mat-button class="button_calender calender_button">
+    <div class="calender_btn_content d-flex justify-content-around aligh-items-center">
+        <mat-icon class="mx-3">event</mat-icon>Holiday Events<mat-icon class="mx-3">expand_more</mat-icon>
+    </div>
+</button>

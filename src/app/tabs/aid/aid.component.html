@@ -1,0 +1,15 @@
+<mat-card class="example-card my-3 animate__animated animate__backInRight" *ngFor="let item of data">
+    <div class="d-flex justify-content-between">
+        <mat-card-title style="font-size: 15px;">{{item.title}}</mat-card-title>
+        <mat-card-subtitle style="font-size: 11px;"><i>{{item.date}}</i></mat-card-subtitle>
+    </div>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-card-content class="my-3">
+        <p>{{item.description}}</p>
+    </mat-card-content>
+    <mat-card-actions class="d-flex justify-content-end">
+        <button mat-flat-button color="primary" onclick="check()"
+            class="hvr-grow notification_button btn mx-1 justify-content-center align-items-center d-flex">Learn More
+        </button>
+    </mat-card-actions>
+</mat-card>

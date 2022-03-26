@@ -1,49 +1,89 @@
-
 <div class="accordions mx-5 my-4">
+    <!-- Added Default Accordion as example -->
     <mat-accordion>
         <mat-expansion-panel class="my-3 accordion_box">
             <mat-expansion-panel-header>
                 <mat-panel-title>
-                    Business Solution
+                    {{title}}
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <a class="button_modal" (click)="openDialog()"><i class='bx bx-link-external mx-3'></i>{{newEvent_form}}</a><br>
-            <!-- <a class="button_modal" (click)="openDialog()"><i class='bx bx-link-external mx-3'></i>{{accordian_title}}</a><br>
-            <a class="button_modal" (click)="openDialog()"><i class='bx bx-link-external mx-3'></i>{{accordian_title}}</a><br> -->
-        </mat-expansion-panel>
-        <!-- <mat-expansion-panel class="my-3 accordion_box">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Business Solution
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <a class="button_modal" (click)="openDialog()">Information Security Awareness</a><br>
-            <a class="button_modal" (click)="openDialog()">Alert Mail _ Security</a><br>
-            <a class="button_modal" (click)="openDialog()">Fake COVID vaccine registration App</a><br>
-        </mat-expansion-panel>
-        <mat-expansion-panel class="my-3 accordion_box">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Business Solution
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <a class="button_modal" (click)="openDialog()">Information Security Awareness</a><br>
-            <a class="button_modal" (click)="openDialog()">Alert Mail _ Security</a><br>
-            <a class="button_modal" (click)="openDialog()">Fake COVID vaccine registration App</a><br>
-        </mat-expansion-panel>
-        <mat-expansion-panel class="my-3 accordion_box">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Business Solution
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <a class="button_modal" (click)="openDialog()">Information Security Awareness</a><br>
-            <a class="button_modal" (click)="openDialog()">Alert Mail _ Security</a><br>
-            <a class="button_modal" (click)="openDialog()">Fake COVID vaccine registration App</a><br>
+            <a mat-button class="button_modal border-0" (click)="openDialog()"><i
+                    class='bx bx-link-external mx-3'></i>{{subtitle}}</a><br>
         </mat-expansion-panel>
     </mat-accordion>
-</div> -->
-<!-- <app-add-event-form></app-add-event-form> -->
-<div (click)="show_addevent()" class="add_event d-flex justify-content-center align-items-center">
-    <mat-icon>add</mat-icon>Add New Event
-</div>
+
+    <!-- New added accordion by user -->
+    <mat-accordion *ngFor="let item of listDate">
+        <mat-expansion-panel class="my-3 accordion_box">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{item.select_subtopic}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <a mat-button class="button_modal border-0" (click)="openDialog()"><i
+                    class='bx bx-link-external mx-3'></i>{{item.add_topic}}</a><br>
+        </mat-expansion-panel>
+        <!-- Description in Modal -->
+        <div *ngIf="showMask" class="lightbox d-flex justify-content-center align-items-center position-fixed">
+            <div class="close_button m-2 position-absolute" (click)="close_modal()">
+                <mat-icon>close</mat-icon>
+            </div>
+            <div class="description_section p-5">
+                {{item.add_desc}}
+            </div>
+        </div>
+    </mat-accordion>
+
+    <!-- Hidden form to add new event -->
+    <mat-card *ngIf="create_new_event">
+        <form #validForm="ngForm" class="example-form newEvent_form m-3"
+            [formGroup]="userForm">
+            <!-- Add Topic -->
+            <div class="d-flex flex-column mx-2">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Topic</mat-label>
+                    <input required #event_topic name="valid_topic" ngModel class="add_new_event"
+                        formControlName="add_topic" matInput>
+                </mat-form-field>
+            </div>
+            <!-- Select Subtopic -->
+            <div class="d-flex flex-column mx-2">
+                <mat-form-field appearance="fill" class="mx-2">
+                    <mat-label>Select an option</mat-label>
+                    <mat-select class="add_new_option" formControlName="select_subtopic" disableRipple ngModel required
+                        name="valid_subtopic" #event_select>
+                        <mat-option value="Business Solution">Business Solution</mat-option>
+                        <mat-option value="AID">AID</mat-option>
+                        <mat-option value="Group HR, Admin and EHS">Group HR, Admin and EHS</mat-option>
+                        <mat-option value="SAMEA">SAMEA</mat-option>
+                        <mat-option placeholder="Add new Department"><mat-icon>add</mat-icon><b>Add Department</b></mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <!-- Add Descriptions -->
+            <div class="d-flex flex-column mx-2">
+                <mat-form-field class="text_area" appearance="fill">
+                    <mat-label>Event Description</mat-label>
+                    <textarea formControlName="add_desc" required ngModel name="valid_desc" class="new_event_desc"
+                        matInput #event_desc></textarea>
+                </mat-form-field>
+            </div>
+            <button [disabled]="validForm.invalid" (click)="addItem()" class="mx-2 btn_add_event" type="submit"
+                mat-raised-button color="primary">
+                <mat-icon>add</mat-icon>Add
+            </button>
+            <button class="m-2 btn_cancel" (click)="resetForm()" mat-button>Reset</button>
+        </form>
+    </mat-card>
+    <!-- Button to show add event form -->
+    <div class="add_event d-flex justify-content-end align-items-center">
+        <button (click)="show_addevent()" *ngIf="add_event" mat-button>
+            <mat-icon>add</mat-icon>Add New Event
+        </button>
+    </div>
+    <!-- Button to hide add event form -->
+    <div (click)="show_dltevent()" *ngIf="delete_event" class="add_event d-flex justify-content-end align-items-center my-2">
+        <button mat-button>
+            <mat-icon>delete</mat-icon>Cancel
+        </button>
+    </div>

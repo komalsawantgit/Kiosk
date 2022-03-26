@@ -16,8 +16,11 @@ export class CalenderComponent implements OnInit {
     
   }
 
+  // icon_expand = "expand_more"
+
   showCalender() {
     this.showMe =! this.showMe;
+    // this.icon_expand = 'icon_expand';
   }
   showMe : boolean= false;
   public minDate: Date = new Date("05/07/2017");

@@ -1,28 +1,75 @@
 <div class="header d-flex">
-    <div class="head p-3 m-3 d-flex justify-content-center align-items-center">
+    <!-- User Welcome Greet -->
+    <mat-card class="greet_section d-flex align-items-center justify-content-between m-2">
         <div class="greet d-flex justify-content-center flex-column align-items-left mx-2">
             <h3 class="greeting"><b>Welcome Back Kaustubh!</b></h3>
             <h5 class="notification_heading">You have 24 notifications</h5>
         </div>
         <div class="buttons d-flex justify-content-end">
-            <button class="notification_button btn mx-1 justify-content-center align-items-center d-flex">9 Awaiting
+            <button mat-flat-button color="primary"
+                class="hvr-grow-shadow notification_button btn mx-1 justify-content-center align-items-center d-flex">9 Awaiting
                 Approvals</button>
-            <button class="notification_button btn mx-1 justify-content-center align-items-center d-flex">6 Pending
+            <button mat-flat-button color="primary"
+                class="hvr-grow notification_button btn mx-1 justify-content-center align-items-center d-flex">6 Pending
                 Task</button>
-            <button class="notification_button btn mx-1 justify-content-center align-items-center d-flex">8
+            <button mat-flat-button color="primary"
+                class="hvr-grow notification_button btn mx-1 justify-content-center align-items-center d-flex">8
                 Requests</button>
-            <button class="notification_button btn mx-1 justify-content-center align-items-center d-flex">Flash
-                News</button>
+            <!-- <button mat-flat-button color="primary" (click)="show_news()"
+                class="notification_button btn mx-1 justify-content-center align-items-center d-flex">Flash
+                News</button> -->
         </div>
-    </div>
-    <div class="profile px-3 my-3 d-flex justify-content-between align-items-center">
+    </mat-card>
+
+    <!-- User Profile -->
+    <mat-card (click)="showDropdown()" class="profile_section d-flex align-items-center justify-content-between m-2">
         <img class="rounded-circle" src="assets\img\images.jpg" height="40" width="40" alt="Profile Image">
-        <div class="greet d-flex justify-content-center flex-column align-items-start mx-2">
-            <h3 class="profile_name"><b>Kaustubh Mestri <i class='bx bxs-down-arrow'></i></b></h3>
+        <div class="greet d-flex justify-content-center flex-column align-items-start mx-2 mt-2">
+            <h3 class="profile_name"><b>Kaustubh Mestry</b></h3>
             <h5 class="profile_position">Hr, Executive</h5>
         </div>
-    </div>
-    <div class="profile px-3 my-3 mx-3 d-flex justify-content-between align-items-center">
-        <mat-icon>mail</mat-icon>
+        <mat-icon style="font-size: 35px; color: #325e94;" class="mb-3" >arrow_drop_down</mat-icon>
+    </mat-card>
+
+    <!-- Hidden Log out option -->
+    <mat-card class="pop_over position-absolute" *ngIf="showPopover">
+        <div class="d-flex justify-content-between flex-row align-items-start mx-2">
+            <div class="d-flex flex-row justify-content-center align-items-center">
+                <mat-icon class="mr-2">logout</mat-icon>
+                <h5 class="log_out mx-2">Log Out</h5>
+            </div>
+        </div>
+    </mat-card>
+
+    <!-- User Notifications -->
+    <mat-card (click)="openBottomSheet()" class="mail_section d-flex align-items-center justify-content-center m-2">
+        <mat-icon class="mail_icon hvr-buzz-out">mail</mat-icon>
+    </mat-card>
+    <!--Hidden Mail Notifications -->
+    <div class="lightbox animate__animated animate__slideInRight" *ngIf="notification_shown">
+        <div class="p-3 close_notification animate__animated animate__slideInRight" (click)="close_note()">
+            <mat-icon class="close">clear</mat-icon>
+        </div>
+        <div class="messages animate__animated animate__slideInRight animate__delay-1s">
+            <div class="search d-flex justify-content-center align-items-center m-2">
+                <input placeholder="Search Here" class="search_panel pl-3" type="search">
+                <div class="search_icon p-1"><mat-icon>search</mat-icon></div>
+            </div>
+            <div class="chat d-flex align-items-center p-2 m-3">
+                <img class="rounded-circle m-1" src="assets\img\images.jpg" alt="Profile Image" height="40" width="40">
+                <h3 class="m-1" style="color: gray;">Kaustubh Mestri</h3>
+            </div>
+        </div>
     </div>
 </div>
+
+<!-- Hidden Flash News Marquee -->
+<mat-card class="flash_news_container d-flex justify-content-center align-items-center ml-2"
+    color="primary">
+    <marquee direction="" onmouseover="this.stop();" onmouseout="this.start();">
+        Flash News will be shown here
+    </marquee>
+    <!-- <div (click)="close_flash_news()">
+        <i class='bx bx-x'></i>
+    </div> -->
+</mat-card>

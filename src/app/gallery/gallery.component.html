@@ -1,17 +1,88 @@
-<div class="gallery_div mx-3 p-4 justify-content-center align-items-center d-flex flex-column">
-    <marquee direction="up" behavior="alternate" onmouseover="this.stop();" onmouseout="this.start();">
-        <!-- <img class="slider_image my-2" height="200" width="300" alt="Slider Image" [src]="url"> -->
-        <img class="slider_image my-2" height="200" width="350" id="slider1" src="assets\img\slider1.jpg" alt="Slider Image" (click)="ShowImage()">
-        <img class="slider_image my-2" height="200" width="350" id="slider2" src="assets\img\slider2.jpg" alt="Slider Image" (click)="ShowImage()">
-        <img class="slider_image my-2" height="200" width="350" id="slider3" src="assets\img\slider3.jpg" alt="Slider Image" (click)="ShowImage()">
-        <img class="slider_image my-2" height="200" width="350" id="slider4" src="assets\img\slider4.jpg" alt="Slider Image" (click)="ShowImage()">
-        <img class="slider_image my-2" height="200" width="350" id="slider5" src="assets\img\slider5.jpg" alt="Slider Image" (click)="ShowImage()">
-        <img class="slider_image my-2" height="200" width="350" id="slider6" src="assets\img\slider6.jpg" alt="Slider Image" (click)="ShowImage()">
-        <img class="slider_image my-2" height="200" width="350" id="slider7" src="assets\img\slider7.jpg" alt="Slider Image" (click)="ShowImage()">
-    </marquee>
-    <div class="add_image">
-        <button type="button" class="btn_add" mat-raised-button color="primary">
-            <mat-icon>add</mat-icon>Add New Image
-        </button>
+<div class="gallery_div justify-content-center align-items-center d-flex flex-column">
+    <div class="gallery-lightbox-container py-1">
+        <marquee direction="up" behavior="alternate" onmouseover="this.stop();" onmouseout="this.start();">
+            <div class="gallery">
+                <div class="gallery-img" *ngFor="let data of gallerydata; let i=index">
+                    <img height="120" width="200" class="m-2" [src]="data.imageSrc" [alt]="data.imageAlt"
+                        (click)="onPreviewImg(i)">
+                </div>
+            </div>
+        </marquee>
     </div>
+
+    <!-- Image Gallery Lightbox -->
+    <div *ngIf="showMask" class="lightbox">
+        <span *ngIf="showCount" class="count">{{currentIndex + 1}}/{{totalImageCount}}</span>
+        <div *ngIf="previewImage" (click)="closePreview()"
+            class="close-button d-flex justify-content-center align-items-center">
+            <!-- <i class='bx bx-x'></i> -->
+            <mat-icon>clear</mat-icon>
+            <!-- <mat-icon class='bx bx-chevron-right icon-lightbox-carousel icon-next'>clear</mat-icon> -->
+        </div>
+        <div (click)="prev()" *ngIf="controls"
+            class="btn-lightbox-carousel btn-prev d-flex justify-content-center align-items-center">
+            <mat-icon>arrow_back_ios</mat-icon>
+        </div>
+        <div (click)="next()" *ngIf="controls"
+            class="btn-lightbox-carousel btn-next d-flex justify-content-center align-items-center">
+            <!-- <i class='bx bx-chevron-right icon-lightbox-carousel icon-next'></i> -->
+            <mat-icon>arrow_forward_ios</mat-icon>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <div class="lightbox-img">
+                <img height="400" width="600" [src]="currentLightBoxImage.imageSrc"
+                    [alt]="currentLightBoxImage.imageAlt">
+            </div>
+            <!-- <marquee direction="left" behavior="alternate" onmouseover="this.stop();" onmouseout="this.start();"> -->
+                <div class="bottom_gallery d-flex flex-row horizontal-scrollable">
+                    <div class="gallery-img" *ngFor="let data of gallerydata; let i=index">
+                        <img height="120" width="200" class="m-2" [src]="data.imageSrc" [alt]="data.imageAlt"
+                            (click)="onPreviewImg(i)">
+                    </div>
+                </div>
+            <!-- </marquee> -->
+        </div>
+    </div>
+
+    <!-- Crop Image -->
+    <div class="lightbox" *ngIf="crop_img">
+        <div (click)="closeCropImg()" class="close-button d-flex justify-content-center align-items-center">
+            <!-- <i class='bx bx-x'></i> -->
+            <mat-icon>clear</mat-icon>
+        </div>
+        <div class="upload_img">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        Add Image in Gallery
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <input accept="image/*" type="file" (change)="fileChangeEvent($event)" />
+                        </form>
+                        <div class="row" style="margin-top: 15px;">
+                            <div class="text-center col-md-8">
+                                <h5>Crop Image</h5>
+                                <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+                                    [aspectRatio]="5 / 3" [resizeToWidth]="256" format="png"
+                                    (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                                    (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+                                </image-cropper>
+                            </div>
+                            <div class="text-center col-md-4">
+                                <h5>Preview</h5>
+                                <img [src]="croppedImage" *ngIf="croped" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button (click)="upload_img()" mat-raised-button color="primary">
+                <mat-icon class="add_img_icon">add</mat-icon>Add This Image
+            </button>
+        </div>
+    </div>
+    <button (click)="show_crop_img()" mat-raised-button color="primary" class="hvr-grow add_img">
+        <mat-icon class="add_img_icon">add</mat-icon>Add Image
+    </button>
 </div>

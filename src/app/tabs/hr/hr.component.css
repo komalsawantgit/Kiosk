@@ -1,0 +1,13 @@
+.card_learnMore{
+    width: 79px;
+    height: 25px;
+    font-size: 11px;
+}
+.notification_button{
+    font-size: 12px;
+    height: 28px;
+    background-color: #355070;
+}
+mat-card{
+    border-radius: 10px 0px 10px 0px;
+}

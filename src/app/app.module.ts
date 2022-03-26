@@ -20,7 +20,12 @@ import { DialogBoxContentComponent } from './dialog-box-content/dialog-box-conte
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatListModule } from '@angular/material/list'
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTabsModule } from '@angular/material/tabs';
 
 // Material Ui end
 
@@ -28,7 +33,18 @@ import { MatSelectModule } from '@angular/material/select';
 import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
 import { GalleryImageComponent } from './gallery-image/gallery-image.component';
 import { AddEventFormComponent } from './add-event-form/add-event-form.component';
+import { FormNewEventComponent } from './form-new-event/form-new-event.component';
 // Calender End
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { TabsComponent } from './tabs/tabs.component';
+import { AidComponent } from './tabs/aid/aid.component';
+import { BussinessSolnComponent } from './tabs/bussiness-soln/bussiness-soln.component';
+import { HrComponent } from './tabs/hr/hr.component';
+import { SameaComponent } from './tabs/samea/samea.component';
+import { LoginComponent } from './login/login.component';
+
+import 'animate.css';
 
 @NgModule({
   declarations: [
@@ -42,6 +58,14 @@ import { AddEventFormComponent } from './add-event-form/add-event-form.component
     DialogBoxContentComponent,
     GalleryImageComponent,
     AddEventFormComponent,
+    FormNewEventComponent,
+    NotificationsComponent,
+    TabsComponent,
+    AidComponent,
+    BussinessSolnComponent,
+    HrComponent,
+    SameaComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +78,15 @@ import { AddEventFormComponent } from './add-event-form/add-event-form.component
     CalendarModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    MatBottomSheetModule,
+    MatListModule,
+    ImageCropperModule,
+    MatTooltipModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

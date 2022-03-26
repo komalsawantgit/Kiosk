@@ -1,5 +1,13 @@
 <app-calender class="d-flex"></app-calender>
-<div class="d-flex">
-    <app-accordion></app-accordion>
-    <app-gallery></app-gallery>
+<div class="home_content d-flex justify-content-between">
+    <!-- <app-accordion></app-accordion> -->
+    <app-tabs class="d-flex justify-content-center align-items-center"></app-tabs>
+    <app-gallery [gallerydata]="data" [showCount]="true"></app-gallery>
 </div>
+<!-- <h3 class="popup_title"> Holiday Details
+    <button mat-button class="modal_close_icon" [mat-dialog-close]="false" cdkFocusInitial>
+        <i class="material-icons">
+            close
+        </i>
+    </button>
+</h3> -->

@@ -1,12 +1,9 @@
 app-sidebar{
-    position: absolute;
-    z-index: 1000;
+    /* z-index: 3; */
+    width: 6%;
 }
 app-header{
     margin-left: 7%;
-    position: absolute;
-}
-app-home{
-    position: relative;
-    /* margin-top: 50%; */
+    width: 80%;
+    /* z-index: 1; */
 }
